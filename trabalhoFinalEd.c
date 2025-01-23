@@ -3,11 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
-#define MAX 100
-
 typedef struct {
-    int conjunto[MAX];       
+    int conjunto[100];       
     int tam;
 } Set;
 
