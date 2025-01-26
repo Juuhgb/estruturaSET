@@ -1,10 +1,11 @@
-#include "set.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 
+#define MAX 100
+
 typedef struct {
-    int conjunto[100];       
+    int conjunto[MAX];       
     int tam;
 } Set;
 
@@ -155,17 +156,78 @@ void print(Set *set){
     printf("}\n");
 }
 
-int main(){
-    Set set1 = {{2, 1, 4, 5, 8}, 5};
-    Set set2 = {{1, 3, 5, 9}, 4};
+int main() {
+    Set set1 = {{0}, 0};
+    Set set2 = {{0}, 0};
+    Set result = {{0}, 0};
 
-    Set result = difference(&set1, &set2);
+    add(&set1, 1);
+    add(&set1, 2);
+    add(&set1, 3);
+    add(&set1, 4);
 
-    printf("Diferença (A - B): ");
-    for (int i = 0; i < result.tam; i++) {
-        printf("%d ", result.conjunto[i]);
-    }
-    printf("\n");
+    add(&set2, 3);
+    add(&set2, 4);
+    add(&set2, 5);
+    add(&set2, 6);
+
+    printf("Conjunto 1: ");
+    print(&set1);
+
+    printf("Conjunto 2: ");
+    print(&set2);
+
+    printf("Conjunto 1 está vazio? %s\n", isEmpty(&set1) ? "Sim" : "Não");
+
+    printf("Tamanho do Conjunto 1: %d\n", len(&set1));
+
+    printf("O elemento 3 está no Conjunto 1? %s\n", isIn(&set1, 3) ? "Sim" : "Não");
+
+    printf("O elemento 7 não está no Conjunto 1? %s\n", isNotIn(&set1, 7) ? "Sim" : "Não");
+
+    printf("Conjunto 1 e Conjunto 2 são disjuntos? %s\n", isDisjoint(&set1, &set2) ? "Sim" : "Não");
+
+    removeElem(&set1, 2);
+    printf("Conjunto 1 após remover o elemento 2: ");
+    print(&set1);
+
+    int popped = pop(&set1);
+    printf("Elemento removido aleatoriamente do Conjunto 1: %d\n", popped);
+    printf("Conjunto 1 após pop: ");
+    print(&set1);
+
+    clear(&set2);
+    printf("Conjunto 2 após clear: ");
+    print(&set2);
+
+    add(&set2, 3);
+    add(&set2, 4);
+    add(&set2, 5);
+    add(&set2, 6);
+
+    result = setUnion(&set1, &set2);
+    printf("União de Conjunto 1 e Conjunto 2: ");
+    print(&result);
+
+    result = intersection(&set1, &set2);
+    printf("Interseção de Conjunto 1 e Conjunto 2: ");
+    print(&result);
+
+    result = difference(&set1, &set2);
+    printf("Diferença entre Conjunto 1 e Conjunto 2: ");
+    print(&result);
+
+    result = symmetric_difference(&set1, &set2);
+    printf("Diferença simétrica entre Conjunto 1 e Conjunto 2: ");
+    print(&result);
+
+    printf("Conjunto 1 é subconjunto de Conjunto 2? %s\n", isSubSet(&set1, &set2) ? "Sim" : "Não");
+
+    printf("Conjunto 1 é superconjunto de Conjunto 2? %s\n", isSuperSet(&set1, &set2) ? "Sim" : "Não");
+
+    copy(&set1, &result);
+    printf("Cópia do Conjunto 1: ");
+    print(&result);
 
     return 0;
 }
