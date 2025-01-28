@@ -1,1 +1,1 @@
-Implementação da estrutura set em Python na linguagem C.
+Implementação da estrutura set de Python na linguagem C.
