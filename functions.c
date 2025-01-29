@@ -1,12 +1,5 @@
 #include "set.h"
 
-#define MAX 100
-
-typedef struct {
-    int conjunto[MAX];       
-    int tam;
-} Set;
-
 void add(Set *set, int elem) {
     for(int i = 0; i < set->tam; i++){
         if(set->conjunto[i] == elem){

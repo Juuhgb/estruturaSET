@@ -18,22 +18,24 @@ int main() {
 
     printf("Conjunto 1: ");
     print(&set1);
-
     printf("Conjunto 2: ");
     print(&set2);
+
+    printf("\n----------------------\n");
 
     printf("Conjunto 1 esta vazio? %s\n", isEmpty(&set1) ? "Sim" : "Nao");
 
     printf("Tamanho do Conjunto 1: %d\n", len(&set1));
 
-    printf("%s\n", isIn(&set1, 3) ? "Sim" : "Nao");
+    printf("Esta no conjunto? %s\n", isIn(&set1, 3) ? "Sim" : "Nao");
 
-    printf("%s\n", isNotIn(&set1, 7) ? "Sim" : "Nao");
+    printf("Não esta contido? %s\n", isNotIn(&set1, 7) ? "Sim" : "Nao");
 
     printf("Conjunto 1 e Conjunto 2 sao disjuntos? %s\n", isDisjoint(&set1, &set2) ? "Sim" : "Nao");
 
+    printf("Remocao(set1):");
     removeElem(&set1, 2);
-    printf("Conjunto 1 apos remover o elemento 2: ");
+    
     print(&set1);
 
     int popped = pop(&set1);
@@ -66,9 +68,9 @@ int main() {
     printf("Diferenca simetrica entre Conjunto 1 e Conjunto 2: ");
     print(&result);
 
-    printf("Conjunto 1 eh subconjunto de Conjunto 2? %s\n", isSubSet(&set1, &set2) ? "Sim" : "Não");
+    printf("Conjunto 1 eh subconjunto de Conjunto 2? %s\n", isSubSet(&set1, &set2) ? "Sim" : "Nao");
 
-    printf("Conjunto 1 eh superconjunto de Conjunto 2? %s\n", isSuperSet(&set1, &set2) ? "Sim" : "Não");
+    printf("Conjunto 1 eh superconjunto de Conjunto 2? %s\n", isSuperSet(&set1, &set2) ? "Sim" : "Nao");
 
     copy(&set1, &result);
     printf("Copia do Conjunto 1: ");
