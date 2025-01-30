@@ -57,7 +57,11 @@ int pop(Set *set) {
         return -1;
     }
 
-    int randomIndex = rand() % set->tam;
+    int elem = len(set);
+
+    srand(time(NULL));
+    int randomIndex = rand() % elem;
+    
     int removedElement = set->conjunto[randomIndex];
     
     set->conjunto[randomIndex] = set->conjunto[set->tam - 1];
