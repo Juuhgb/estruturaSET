@@ -1,6 +1,6 @@
 #include "set.h"
 
-void add(Set *set, int elem) {
+void add(Set *set, int elem) { 
     for(int i = 0; i < set->tam; i++){
         if(set->conjunto[i] == elem){
             return;
@@ -53,14 +53,11 @@ void removeElem(Set *set, int elem) {
 
 int pop(Set *set) {
     if (isEmpty(set)) {
-        printf("Conjunto vazio\n");
         return -1;
     }
 
-    int elem = len(set);
-
     srand(time(NULL));
-    int randomIndex = rand() % elem;
+    int randomIndex = rand() % set->tam;
     
     int removedElement = set->conjunto[randomIndex];
     

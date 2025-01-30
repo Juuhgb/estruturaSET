@@ -8,15 +8,14 @@ int main() {
 
     add(&set1, 1);
     add(&set1, 2);
-    add(&set1, 3);
-    add(&set1, 7);
-    add(&set1, 44);
+    add(&set1, 4);
+    add(&set1, 8);
 
     add(&set2, 3);
+    add(&set2, 2);
     add(&set2, 4);
-    add(&set2, 5);
     add(&set2, 6);
-    add(&set2, 7);
+    add(&set2, 8);
 
     printf("====================================\n");
     printf("Conjunto 1: ");
@@ -50,12 +49,19 @@ int main() {
 
     printf("\n");
 
+    //clear(&set1);
     //Testando a funcao pop
     int popped = pop(&set1);
-    printf("Elemento removido aleatoriamente do Conjunto 1: %d\n", popped);
-    printf("Conjunto 1 apos pop: ");
-    print(&set1);
-
+    
+    if(popped == -1){
+        printf("conjunto vazio");
+    }
+    else{
+        printf("Elemento removido aleatoriamente do Conjunto 1: %d\n", popped);
+        printf("Conjunto 1 apos pop: ");
+        print(&set1);
+    }
+    
     printf("\n");
 
     //testando setUnion
@@ -66,9 +72,9 @@ int main() {
     printf("\n");
 
     result = intersection(&set1, &set2);
-    printf("conjunto 1:\n");
+    printf("conjunto 1:");
     print(&set1);
-    printf("conjunto 2:\n");
+    printf("conjunto 2:");
     print(&set2);
 
     printf("\n");
@@ -78,34 +84,36 @@ int main() {
 
     printf("\n");
 
+    print(&set1);
+    print(&set2);
+
     result = difference(&set1, &set2);
     printf("Diferenca entre Conjunto 1 e Conjunto 2: "); // set1 - set2
     print(&result);
 
     printf("\n");
 
-    //retorna elementos 
     result = symmetric_difference(&set1, &set2);
     printf("Retorna um conjunto com os elementos exclusivos entre os dois conjuntos: ");
     print(&result);
 
+    printf("\n");
 
     //IsSubSet e isSuperSet
+    print(&set1);
+    print(&set2);
+
     printf("Conjunto 1 eh subconjunto de Conjunto 2? %s\n", isSubSet(&set1, &set2) ? "Sim" : "Nao");
     printf("Conjunto 1 eh superconjunto de Conjunto 2? %s\n", isSuperSet(&set1, &set2) ? "Sim" : "Nao");
 
     printf("\n");
 
-    clear(&set1);
-    add(&set1, 8);
-    add(&set1, 9);
-    add(&set1, 10);
+    //testando a funcao copy
 
     //copia do conjunto 1 para o 2
     copy(&set1, &set2);
     printf("Copia do Conjunto 1 para o 2: ");
     print(&set2);
-
 
     //limpando os conjuntos
     clear(&set1);
